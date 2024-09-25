@@ -1,0 +1,15 @@
+<div class="container">
+    <app-header></app-header>
+    <app-filters></app-filters>
+    <section class="countries">
+        <ul class="countries__list">
+            <app-countries *ngFor="let country of countriesList"
+                [flag]="country.flags.svg"
+                [countryName]="country.name.common"
+                [population]="country.population"
+                [region]="country.region"
+                [capital]="country.capital"
+            ></app-countries>
+        </ul>
+    </section>
+</div>

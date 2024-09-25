@@ -1,0 +1,20 @@
+<li class="country">
+    <img [src]="flag" [alt]="countryName" class="country__flag">
+    <div class="country__infos">
+        <h2 class="country__name">{{ countryName }}</h2>
+        <ul class="country__details">
+            <li class="country__details-item">
+                <strong>Population: </strong>
+                <span class="country__population">{{ population | number }}</span>
+            </li>
+            <li class="country__details-item">
+                <strong>Region: </strong>
+                <span class="country__population">{{ region }}</span>
+            </li>
+            <li class="country__details-item">
+                <strong>Capital: </strong>
+                <span class="country__population">{{ capital }}</span>
+            </li>
+        </ul>
+    </div>
+</li>

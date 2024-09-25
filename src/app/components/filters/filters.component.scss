@@ -1,0 +1,41 @@
+@use "../../../styles/variables";
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  &__input-and-icon {
+    position: relative;
+    i {
+      position: absolute;
+      top: 14px;
+      left: 2rem;
+      opacity: 0.2;
+    }
+  }
+  &__input-text {
+    width: 100%;
+    padding: 0.8rem 0.8rem 0.8rem 4.5rem;
+    box-shadow: 0 0 5px variables.$Dark-Gray-Shadow;
+    border: none;
+    cursor: pointer;
+    &::placeholder {
+      font-size: 0.75rem;
+      color: variables.$Dark-Gray;
+      opacity: 0.7;
+    }
+  }
+  &__form-field {
+    max-width: 200px;
+  }
+  &__label {
+    font-size: 0.7rem;
+  }
+  &__select {
+    font-size: 0.7rem;
+  }
+  &__option {
+    font-size: 0.7rem;
+  }
+}

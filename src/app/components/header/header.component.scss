@@ -1,0 +1,28 @@
+@use "../../../styles/variables";
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 3px variables.$Dark-Gray-Shadow;
+    background-color: variables.$White;
+    padding: 1.9rem 1rem;
+    &__title {
+        font-size: .9rem;
+        font-weight: 700;
+    }
+    &__toggle-theme-btn {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        i {
+            font-size: 1rem;
+        }
+    }
+    &__toggle-theme-btn-text {
+        font-size: .75rem;
+    }
+}

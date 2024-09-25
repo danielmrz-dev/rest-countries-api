@@ -1,0 +1,16 @@
+<div class="filters">
+
+  <div class="filters__input-and-icon">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" placeholder="Search for a country..." class="filters__input-text"/>
+  </div>
+  
+  <mat-form-field class="filters__form-field">
+    <mat-label class="filters__label">Filter by Region</mat-label>
+    <mat-select class="filters__select">
+      @for (region of regions; track region) {
+        <mat-option class="filters__option" [value]="region.value">{{ region.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
