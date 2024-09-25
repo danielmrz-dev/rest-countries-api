@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FilterByNameDirective } from './filter-by-name.directive';
+import { FiltersDirective } from './filters.directive';
+import { ColorThemeDirective } from './color-theme.directive';
 
 
 
 @NgModule({
   declarations: [
-    FilterByNameDirective
+    FiltersDirective,
+    ColorThemeDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    FilterByNameDirective
+    FiltersDirective,
+    ColorThemeDirective
   ]
 })
 export class DirectivesModule { }
