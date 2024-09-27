@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'; 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class CountriesApiService {
 
-  private api = "https://restcountries.com/v3.1/all"
+  private api = "https://restcountries.com/v3.1/all";
 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
-    return this.http.get<any>(this.api)
+    return this.http.get<any>(this.api);
   }
 }
