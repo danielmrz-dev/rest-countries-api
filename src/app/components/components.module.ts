@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FiltersComponent } from './filters/filters.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { CountriesComponent } from './countries/countries.component';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 
@@ -11,11 +12,12 @@ import { CountriesComponent } from './countries/countries.component';
   declarations: [
     HeaderComponent,
     FiltersComponent,
-    CountriesComponent
+    CountriesComponent,
   ],
   imports: [
     CommonModule, 
-    AngularMaterialModule
+    AngularMaterialModule,
+    DirectivesModule
   ],
   exports: [
     HeaderComponent,

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { DarkThemeService } from '../../services/dark-theme.service';
 
 @Component({
   selector: 'app-countries',
@@ -11,4 +12,8 @@ export class CountriesComponent {
   @Input({ required: true }) population: number = 0 
   @Input({ required: true }) region: string = ''
   @Input({ required: true }) capital: string = ''
+
+  darkThemeService = inject(DarkThemeService)
+
+  isDarkThemeEnabled$ = this.darkThemeService.isDarkThemeEnabled$
 }

@@ -39,3 +39,57 @@
     font-size: 0.7rem;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .filters {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1310px;
+    margin: auto;
+    padding: 1.5rem 1rem 2.5rem;
+    &__input-and-icon {
+      align-self: center;
+      i {
+        top: 16px;
+      }
+    }
+    &__input-text {
+      min-width: 480px;      
+      padding: 1.1rem 1.1rem 1.1rem 4.5rem;
+      cursor: pointer;
+      &::placeholder {
+        font-size: 0.85rem;
+      }
+    }
+    &__form-field {
+      max-width: 200px;
+      position: relative;
+      top: 10px;
+    }
+    &__label {
+      font-size: .85rem;
+      padding-left: 0.5rem;
+    }
+    &__select {
+      font-size: .85rem;
+    }
+    &__option {
+      font-size: .85rem;
+    }
+  }
+}
+
+.dark {
+  background-color: variables.$Dark-Blue;
+  color: variables.$White;
+}
+
+.dark-input {
+  background-color: variables.$Light-Dark-Blue;
+  color: variables.$White;  
+  &::placeholder {
+    color: variables.$White;
+  }
+}
+
+// 

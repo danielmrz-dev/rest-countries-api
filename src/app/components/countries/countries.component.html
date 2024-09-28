@@ -1,5 +1,7 @@
-<li class="country">
-    <img [src]="flag" [alt]="countryName" class="country__flag">
+<li class="country" [class.dark]="isDarkThemeEnabled$ | async">
+    <div class="country__flag-container">
+        <img [src]="flag" [alt]="countryName" class="country__flag">
+    </div>
     <div class="country__infos">
         <h2 class="country__name">{{ countryName }}</h2>
         <ul class="country__details">

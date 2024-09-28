@@ -1,10 +1,8 @@
-import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Input, OnChanges, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appColorTheme]'
+  selector: '[appColorTheme]',
 })
 export class ColorThemeDirective {
-
   
-
 }

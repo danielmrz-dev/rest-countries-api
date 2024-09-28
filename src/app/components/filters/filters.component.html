@@ -1,8 +1,14 @@
-<div class="filters">
+<div class="filters" [class.dark]="isDarkModeEnabled$ | async">
 
   <div class="filters__input-and-icon">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" placeholder="Search for a country..." class="filters__input-text"/>
+    <input 
+      appFilters
+      type="text" 
+      placeholder="Search for a country..." 
+      class="filters__input-text"
+      [class.dark-input]="isDarkModeEnabled$ | async"
+      />
   </div>
   
   <mat-form-field class="filters__form-field">
