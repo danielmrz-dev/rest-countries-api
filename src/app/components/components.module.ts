@@ -5,6 +5,8 @@ import { FiltersComponent } from './filters/filters.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { CountriesComponent } from './countries/countries.component';
 import { DirectivesModule } from '../directives/directives.module';
+import { FormsModule } from '@angular/forms';
+import { CountryComponent } from './country/country.component';
 
 
 
@@ -13,16 +15,20 @@ import { DirectivesModule } from '../directives/directives.module';
     HeaderComponent,
     FiltersComponent,
     CountriesComponent,
+    CountryComponent,
+    
   ],
   imports: [
     CommonModule, 
     AngularMaterialModule,
-    DirectivesModule
+    DirectivesModule,
+    FormsModule
   ],
   exports: [
     HeaderComponent,
     FiltersComponent,
-    CountriesComponent
+    CountriesComponent,
+    CountryComponent,
   ]
 })
 export class ComponentsModule { }

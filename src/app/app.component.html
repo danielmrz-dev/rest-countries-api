@@ -1,27 +1,49 @@
 <div [class.dark]="isDarkThemeEnabled$ | async" class="container">
   <app-header ></app-header>
-  <app-filters ></app-filters>
   
-  <section class="countries" [class.dark]="isDarkThemeEnabled$ | async">
-    <ul class="countries__list" >
-      <app-countries [class.dark]="isDarkThemeEnabled$ | async"
-        *ngFor="let country of paginatedCountriesList"
-        [flag]="country.flags.svg"
-        [countryName]="country.name.common"
-        [population]="country.population"
-        [region]="country.region"
-        [capital]="country.capital"
-      ></app-countries>
-    </ul>
-  </section>
+  <app-country 
+    [flag]="'2'"
+    [nativeName]="'test'"
+    [population]="20"
+    [region]="'sss'"
+    [subRegion]="'20'"
+    [capital]="'20'"
+    [topLevelDomain]="'20'"
+    [currencies]="['a', 'b']"
+    [languages]="['a', 'b']"
+    [borderCountries]="['a', 'b']"
+    
+    ></app-country>
   
-  <mat-paginator class="paginator"
-    [length]="totalItems"
-    [pageSize]="itemsPerPage"
-    [pageSizeOptions]="[8, 12, 16, 24]"
-    (page)="onPageChange($event)"
-    aria-label="Select page"
-    [class.dark-paginator]="isDarkThemeEnabled$ | async"
-  >
-  </mat-paginator>
+
+  <div class="container__content">
+    <app-filters
+      (inputEvent)="handleInput($event)"
+      (selectEvent)="handleSelect($event)"
+      ></app-filters>
+    
+    <section class="countries" [class.dark]="isDarkThemeEnabled$ | async">
+    
+      <ul class="countries__list" >
+        <app-countries [class.dark]="isDarkThemeEnabled$ | async"
+          *ngFor="let country of paginatedCountriesList"
+          [flag]="country.flags.svg"
+          [countryName]="country.name.common"
+          [population]="country.population"
+          [region]="country.region"
+          [capital]="country.capital"
+        ></app-countries>
+      </ul>
+    </section>
+    
+    <mat-paginator class="paginator"
+      [length]="totalItems"
+      [pageSize]="itemsPerPage"
+      [pageSizeOptions]="[8, 12, 16, 24]"
+      (page)="onPageChange($event)"
+      aria-label="Select page"
+      [class.dark-paginator]="isDarkThemeEnabled$ | async"
+    >
+    </mat-paginator>
+  </div>
 </div>

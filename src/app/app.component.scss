@@ -5,6 +5,9 @@
   flex-direction: column;
   gap: 0.75rem;
   background-color: variables.$Very-Light-Gray;
+  // &__content {
+    
+  // }
   .countries {
     & * {
       list-style-type: none;
@@ -27,8 +30,10 @@
   .paginator {
     align-self: center;
     margin-bottom: 1rem;
+    font-size: .48rem;  
   }
 }
+
 
 @media screen and (min-width: 768px) {
   .container {
@@ -49,6 +54,11 @@
         justify-content: space-between;
         gap: 5rem 2.5rem;
       }
+    }
+    .paginator {
+      align-self: center;
+      margin-bottom: 1rem;
+      font-size: 1rem;  
     }
   }
 }

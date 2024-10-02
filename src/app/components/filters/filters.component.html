@@ -8,15 +8,24 @@
       placeholder="Search for a country..." 
       class="filters__input-text"
       [class.dark-input]="isDarkModeEnabled$ | async"
+      (input)="onInputChange($event)"
       />
   </div>
   
   <mat-form-field class="filters__form-field">
     <mat-label class="filters__label">Filter by Region</mat-label>
-    <mat-select class="filters__select">
-      @for (region of regions; track region) {
-        <mat-option class="filters__option" [value]="region.value">{{ region.viewValue }}</mat-option>
-      }
+    <mat-select 
+      class="filters__select"
+      [(ngModel)]="filterOptions.region"
+      (selectionChange)="onSelect()"
+      >
+      
+      <mat-option 
+          class="filters__option"
+          *ngFor="let region of regions"
+          [value]="region.value">{{ region.viewValue }}
+        </mat-option>
+      
     </mat-select>
   </mat-form-field>
 </div>
