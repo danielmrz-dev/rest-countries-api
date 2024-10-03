@@ -1,4 +1,8 @@
-<li class="country" [class.dark]="isDarkThemeEnabled$ | async">
+<li 
+    class="country" 
+    [class.dark]="isDarkThemeEnabled$ | async"
+    (click)="onClick()"
+    >
     <div class="country__flag-container">
         <img [src]="flag" [alt]="countryName" class="country__flag">
     </div>

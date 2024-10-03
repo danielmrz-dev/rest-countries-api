@@ -1,49 +1,60 @@
 <div [class.dark]="isDarkThemeEnabled$ | async" class="container">
   <app-header ></app-header>
   
-  <app-country 
-    [flag]="'2'"
-    [nativeName]="'test'"
-    [population]="20"
-    [region]="'sss'"
-    [subRegion]="'20'"
-    [capital]="'20'"
-    [topLevelDomain]="'20'"
-    [currencies]="['a', 'b']"
-    [languages]="['a', 'b']"
-    [borderCountries]="['a', 'b']"
-    
-    ></app-country>
+  <ng-container *ngIf="isCountryClicked; then countryInfos; else allCountries"></ng-container>
   
 
-  <div class="container__content">
-    <app-filters
-      (inputEvent)="handleInput($event)"
-      (selectEvent)="handleSelect($event)"
-      ></app-filters>
+  <ng-template #countryInfos>
+    <app-country
+      [flag]="selectedCountry!.flags.svg"
+      [name]="selectedCountry!.name.common"
+      [nativeName]="selectedCountry!.name.official"
+      [population]="selectedCountry!.population"
+      [region]="selectedCountry!.region"      
+      [subRegion]="selectedCountry!.subregion"
+      [capital]="selectedCountry!.capital"
+      [topLevelDomain]="selectedCountry!.tld"
+      [currencies]="'a'"
+      [languages]="'a'"
+      [borderCountries]="getBorderCountry(selectedCountry!).length === 0 ? ['No border countries'] : getBorderCountry(selectedCountry!)"
+      (returnEvent)="returnButton($event)"
+
+      ></app-country>
+  </ng-template>
+  
+
+  <ng-template #allCountries>
+    <div class="container__content" >
+      <app-filters
+        (inputEvent)="handleInput($event)"
+        (selectEvent)="handleSelect($event)"
+        ></app-filters>
     
-    <section class="countries" [class.dark]="isDarkThemeEnabled$ | async">
+      <section class="countries" [class.dark]="isDarkThemeEnabled$ | async">
     
-      <ul class="countries__list" >
-        <app-countries [class.dark]="isDarkThemeEnabled$ | async"
-          *ngFor="let country of paginatedCountriesList"
-          [flag]="country.flags.svg"
-          [countryName]="country.name.common"
-          [population]="country.population"
-          [region]="country.region"
-          [capital]="country.capital"
-        ></app-countries>
-      </ul>
-    </section>
+        <ul class="countries__list" >
+          <app-countries [class.dark]="isDarkThemeEnabled$ | async"
+            *ngFor="let country of paginatedCountriesList"
+            [flag]="country.flags.svg"
+            [countryName]="country.name.common"
+            [population]="country.population"
+            [region]="country.region"
+            [capital]="country.capital"
+            (OnSelectCountry)="getCountryName($event)"
+            (ShowSelectedCountry)="getBoolean($event)"
+          ></app-countries>
+        </ul>
+      </section>
     
-    <mat-paginator class="paginator"
-      [length]="totalItems"
-      [pageSize]="itemsPerPage"
-      [pageSizeOptions]="[8, 12, 16, 24]"
-      (page)="onPageChange($event)"
-      aria-label="Select page"
-      [class.dark-paginator]="isDarkThemeEnabled$ | async"
-    >
-    </mat-paginator>
-  </div>
+      <mat-paginator class="paginator"
+        [length]="totalItems"
+        [pageSize]="itemsPerPage"
+        [pageSizeOptions]="[8, 12, 16, 24]"
+        (page)="onPageChange($event)"
+        aria-label="Select page"
+        [class.dark-paginator]="isDarkThemeEnabled$ | async"
+      >
+      </mat-paginator>
+    </div>
+  </ng-template>
 </div>

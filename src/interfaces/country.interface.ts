@@ -12,10 +12,12 @@ export interface ICountry {
   capital: string;
   altSpellings: string[];
   region: string;
+  subregion?: string | undefined;
   languages: Languages;
   translations: Translations;
   latlng: number[];
   landlocked: boolean;
+  borders?: string[];
   area: number;
   demonyms: Demonyms;
   flag: string;
@@ -33,16 +35,12 @@ export interface ICountry {
 export interface Name {
   common: string;
   official: string;
-  nativeName: NativeName;
-}
-
-export interface NativeName {
-  eng: Eng;
-}
-
-export interface Eng {
-  official: string;
-  common: string;
+  nativeName: {
+    [key: string]: {
+      official: string;
+      common: string;
+    },
+  }
 }
 
 export interface Currencies {

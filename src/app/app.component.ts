@@ -2,10 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CountriesApiService } from './services/countries-api.service';
 import { PageEvent } from '@angular/material/paginator';
 import { ICountry } from '../interfaces/country.interface';
-import { ThemeType } from '../types/theme.type';
 import { DarkThemeService } from './services/dark-theme.service';
 import { BehaviorSubject } from 'rxjs';
-import { IFilterOptions, IRegions } from './components/filters/filters.component';
+import { IFilterOptions } from './components/filters/filters.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +19,10 @@ export class AppComponent implements OnInit {
   totalItems = 0;
   itemsPerPage = 8;
   currentPage = 0;
+  isCountryClicked: boolean = false;
+  selectedCountry: ICountry | undefined;
+  borders: string[] | undefined;
+  nativeName: string = '';
   
   darkThemeService: DarkThemeService = inject(DarkThemeService)
   isDarkThemeEnabled$: BehaviorSubject<boolean> = this.darkThemeService.isDarkThemeEnabled$
@@ -77,4 +80,25 @@ export class AppComponent implements OnInit {
     this.paginatedCountriesList = this.filteredList.slice(startIndex, endIndex); // Fatiamento da lista
   }
   
+  getCountryName(value: string) {
+    this.selectedCountry = this.countriesList.find(country => country.name.common.toLocaleLowerCase() === value.toLocaleLowerCase())
+  }
+
+  getBoolean(value: boolean) {
+    this.isCountryClicked = value;
+  }
+
+  getBorderCountry(selectedCountry: ICountry): string[] {
+
+    return this.countriesList
+      .filter(country => country.borders?.includes(selectedCountry.cca3))
+      .map(country => country.name.common);
+  }
+
+  returnButton(boo: boolean) {
+    this.isCountryClicked = boo;
+    this.filteredList = this.countriesList;
+    this.totalItems = this.countriesList.length;
+    this.loadItems();
+  }
 }
