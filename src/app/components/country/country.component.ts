@@ -1,5 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { DarkThemeService } from '../../services/dark-theme.service';
+import { ICountry } from '../../../interfaces/country.interface';
 
 @Component({
   selector: 'app-country',
@@ -20,11 +21,16 @@ export class CountryComponent {
   @Input({ required: true }) borderCountries?: string[] = []
 
   darkThemeService = inject(DarkThemeService);
-
   isDarkThemeEnabled$ = this.darkThemeService.isDarkThemeEnabled$;
 
   @Output() returnEvent = new EventEmitter<boolean>();
   goBack() {
     this.returnEvent.emit(false);
+  }
+
+  @Output() borderCountryClicked = new EventEmitter<string>()
+
+  onClick(countryName: string) {
+    this.borderCountryClicked.emit(countryName)
   }
 }

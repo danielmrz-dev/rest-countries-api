@@ -9,65 +9,72 @@
     </button>
 
     <div class="country__container">
-        <img [src]="flag" alt="">
+        <div class="country__img-container">
+            <img [src]="flag" alt="">
+        </div>
         <div class="country__text-container">
             <h2>{{ name }}</h2>
-            <span class="country__info">
-                Native name:
-                <b> {{ nativeName }} </b>
+            <div class="country__first-info">
+                <span class="country__info">
+                    Native name:
+                    <b> {{ nativeName }} </b>
+                
+                </span>
+                <span class="country__info">
+                    Population:
+                    <b>
+                        {{ population | number }}
+                    </b>
+                </span>
+                <span class="country__info">
+                    Region:
+                    <b>
+                        {{ region }}
+                    </b>
+                </span>
+                <span class="country__info">
+                    Sub Region:
+                    <b>
+                        {{ subRegion ? subRegion : "-" }}
+                    </b>
+                </span>
+                <span class="country__info">
+                    Capital:
+                    <b>
+                        {{ capital }}
+                    </b>
+                </span>
+            </div>
             
-            </span>
-            <span class="country__info">
-                Population:
-                <b>
-                    {{ population | number }}
-                </b>
-            </span>
-            <span class="country__info">
-                Region:
-                <b>
-                    {{ region }}
-                </b>
-            </span>
-            <span class="country__info">
-                Sub Region:
-                <b>
-                    {{ subRegion ? subRegion : "-" }}
-                </b>
-            </span>
-            <span class="country__info">
-                Capital:
-                <b>
-                    {{ capital }}
-                </b>
-            </span>
-            <br>
-            <span class="country__info">
-                Top Level Domain:
-                <b>
-                    {{ topLevelDomain.join(", ") }}
-                </b>
-            </span>
-            <span class="country__info">
-                Currencies:
-                <b>
-                    {{ currencies }}
-                </b>
-            </span>
-            <span class="country__info">
-                Languages:
-                <b>
-                    {{ languages }}
-                </b>
-            </span>
-            <br>
-            <div class="country__info">
+            <div class="country__second-info">
+                <span class="country__info">
+                    Top Level Domain:
+                    <b>
+                        {{ topLevelDomain.join(", ") }}
+                    </b>
+                </span>
+                <span class="country__info">
+                    Currencies:
+                    <b>
+                        {{ currencies }}
+                    </b>
+                </span>
+                <span class="country__info">
+                    Languages:
+                    <b>
+                        {{ languages }}
+                    </b>
+                </span>
+            </div>
+            
+            <div class="country__info last">
                 <h4>Border Countries</h4>
                 <div class="country__border-countries">
                     <button
                         class="country__info-btn"
                         *ngFor="let country of borderCountries"
                         [class.dark]="isDarkThemeEnabled$ | async"
+                        (click)="onClick(country)"
                         >
                         {{ country }}
                     </button>

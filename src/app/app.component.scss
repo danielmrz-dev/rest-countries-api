@@ -70,5 +70,7 @@
 
 .dark-paginator {
   background-color: variables.$Dark-Blue;
-  color: variables.$White;
+  * {
+    color: variables.$White;
+  }
 }

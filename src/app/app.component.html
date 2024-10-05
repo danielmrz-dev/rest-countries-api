@@ -18,7 +18,7 @@
       [languages]="'a'"
       [borderCountries]="getBorderCountry(selectedCountry!).length === 0 ? ['No border countries'] : getBorderCountry(selectedCountry!)"
       (returnEvent)="returnButton($event)"
-
+      (borderCountryClicked)="receivedBorderCountry($event)"
       ></app-country>
   </ng-template>
   
@@ -46,15 +46,16 @@
         </ul>
       </section>
     
-      <mat-paginator class="paginator"
-        [length]="totalItems"
-        [pageSize]="itemsPerPage"
-        [pageSizeOptions]="[8, 12, 16, 24]"
-        (page)="onPageChange($event)"
-        aria-label="Select page"
-        [class.dark-paginator]="isDarkThemeEnabled$ | async"
-      >
-      </mat-paginator>
     </div>
+    <mat-paginator 
+      class="paginator"
+      [length]="totalItems"
+      [pageSize]="itemsPerPage"
+      [pageSizeOptions]="[8, 12, 16, 24]"
+      (page)="onPageChange($event)"
+      aria-label="Select page"
+      [class.dark]="isDarkThemeEnabled$ | async"
+    >
+    </mat-paginator>
   </ng-template>
 </div>

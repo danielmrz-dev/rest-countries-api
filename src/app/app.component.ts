@@ -101,4 +101,8 @@ export class AppComponent implements OnInit {
     this.totalItems = this.countriesList.length;
     this.loadItems();
   }
+
+  receivedBorderCountry(countryName: string) {
+    this.selectedCountry = this.countriesList.find(country => country.name.common === countryName)
+  }
 }
