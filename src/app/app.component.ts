@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CountriesApiService } from './services/countries-api.service';
 import { PageEvent } from '@angular/material/paginator';
-import { ICountry } from '../interfaces/country.interface';
+import { ICountry, Language } from '../interfaces/country.interface';
 import { DarkThemeService } from './services/dark-theme.service';
 import { BehaviorSubject } from 'rxjs';
 import { IFilterOptions } from './components/filters/filters.component';
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
     if (value.length <= 0) {
       this.filteredList = this.countriesList
     } else {
-      this.filteredList = this.filteredList.filter(country => country.name.common.toLowerCase().includes(value.toLowerCase()))
+      this.filteredList = this.filteredList.filter(country => country.name.toLowerCase().includes(value.toLowerCase()))
     }
     this.totalItems = this.filteredList.length;
     this.loadItems()
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
   }
   
   getCountryName(value: string) {
-    this.selectedCountry = this.countriesList.find(country => country.name.common.toLocaleLowerCase() === value.toLocaleLowerCase())
+    this.selectedCountry = this.countriesList.find(country => country.name.toLocaleLowerCase() === value.toLocaleLowerCase())
   }
 
   getBoolean(value: boolean) {
@@ -91,8 +91,8 @@ export class AppComponent implements OnInit {
   getBorderCountry(selectedCountry: ICountry): string[] {
 
     return this.countriesList
-      .filter(country => country.borders?.includes(selectedCountry.cca3))
-      .map(country => country.name.common);
+      .filter(country => country.borders?.includes(selectedCountry.alpha3Code))
+      .map(country => country.name);
   }
 
   returnButton(boo: boolean) {
@@ -103,6 +103,10 @@ export class AppComponent implements OnInit {
   }
 
   receivedBorderCountry(countryName: string) {
-    this.selectedCountry = this.countriesList.find(country => country.name.common === countryName)
+    this.selectedCountry = this.countriesList.find(country => country.name === countryName)
+  }
+
+  listLanguages(languagesList: Language[]): string {
+    return languagesList.map(country => country.name).join(', ');
   }
 }
