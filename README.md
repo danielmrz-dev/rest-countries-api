@@ -38,7 +38,7 @@ Users are able to:
 
 ### Links
 
-- Solution URL: [Link]()
+- Solution URL: [Link](https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-built-w-angular-j-ZEYa4cFc)
 - Live Site URL: [Link](https://rest-countries-api-lilac-alpha.vercel.app/)
 
 ## My process
